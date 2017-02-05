@@ -97,13 +97,15 @@
     <Compile Include="Entities\SpellParticle.cs" />
     <Compile Include="Globals\Enumerations.cs" />
     <Compile Include="Globals\Funcs.cs" />
-    <Compile Include="Globals\Objects.cs" />
+    <Compile Include="Globals\Constants.cs" />
+    <Compile Include="Globals\Settings.cs" />
     <Compile Include="Interfaces\IInteractable.cs" />
     <Compile Include="Interfaces\ITargetable.cs" />
     <Compile Include="ParticleFactory.cs" />
     <Compile Include="TileEngine\Map.cs" />
     <Compile Include="TileEngine\Maps.cs" />
     <Compile Include="TileEngine\TileMapEngine.cs" />
+    <Compile Include="UI\Debug.cs" />
     <Compile Include="UI\GenericSprites.cs" />
     <Compile Include="Entities\Player.cs" />
     <Compile Include="Program.cs" />

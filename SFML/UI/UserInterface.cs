@@ -100,11 +100,11 @@ namespace RPG
         private Text HealthBarText(Vector2f position,  float HealthPercentage)
         {
             string healthString = string.Format("{0:0.0}%", HealthPercentage * 100);
-            _HealthBarText = new Text(healthString, Objects.GlobalFont, 14)
+            _HealthBarText = new Text(healthString, Constants.GlobalFont, 14)
             {
                 Position = new Vector2f(position.X + 5 , position.Y - 29),
                 Color = Color.Black,
-                Font = Objects.GlobalFont
+                Font = Constants.GlobalFont
             };
             _HealthBarText.Scale = _HealthBarText.Scale / 2;
 

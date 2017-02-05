@@ -32,18 +32,18 @@ namespace RPG
                 Position = new Vector2f(0,0)
             };
 
-            _SpellName = new Text(spell.Name, Objects.GlobalFont, 16) 
+            _SpellName = new Text(spell.Name, Constants.GlobalFont, 16) 
             { 
                 Style = Text.Styles.Bold,
                 Color = Color.Black,
                 Position = new Vector2f(_BackPanel.Position.X + 3, _BackPanel.Position.Y + 3)
             };
-            _Description = new Text(spell.Description, Objects.GlobalFont, 14)
+            _Description = new Text(spell.Description, Constants.GlobalFont, 14)
             {
                 Color = Color.Black,
                 Position = new Vector2f(_BackPanel.Position.X + 3, _BackPanel.Position.Y + 15)
             };
-            _ManaCost = new Text(string.Format("{0} MP", spell.ManaCost), Objects.GlobalFont, 16) 
+            _ManaCost = new Text(string.Format("{0} MP", spell.ManaCost), Constants.GlobalFont, 16) 
             { 
                 Color = Color.Cyan,
                 Style = Text.Styles.Bold,

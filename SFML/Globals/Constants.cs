@@ -7,7 +7,7 @@ using SFML.Graphics;
 
 namespace RPG.Globals
 {
-    public class Objects
+    public class Constants
     {
         public static float PI = 3.14159265f;
         public static Font GlobalFont = new Font(@"C:\Windows\Fonts\Arial.ttf");

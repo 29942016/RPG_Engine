@@ -58,7 +58,7 @@ namespace RPG.Globals
         public static float GetRotation(Vector2f position, Vector2f destination)
         {
             Vector2f vector = new Vector2f(position.X - destination.X, position.Y - destination.Y);
-            float rotation = (float)(Math.Atan2(vector.Y, vector.X)) * 180 / Objects.PI;
+            float rotation = (float)(Math.Atan2(vector.Y, vector.X)) * 180 / Constants.PI;
            
             return rotation;
         }

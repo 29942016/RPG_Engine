@@ -7,6 +7,8 @@ using SFML.System;
 using RPG.TileEngine;
 using RPG.Globals;
 using RPG.Entities;
+using RPG.UI;
+using Config = RPG.Globals.Settings;
 
 namespace RPG
 {
@@ -45,7 +47,6 @@ namespace RPG
             MapEngine = new TileMapEngine();
             MapEngine.SetMap(Maps.GetMapByName("Forest"));
 
-            Text fpsText = new Text("", Globals.Objects.GlobalFont, 21) { Position = new Vector2f(0, 0), Color = Color.Red, Style = Text.Styles.Bold };
             float lastTime = 0f;
             int fps = 0;
 
@@ -67,8 +68,8 @@ namespace RPG
                 #region Draw Target-Ring
                 if (Player.CurrentTarget != null)
                 {
-                    Objects.TargetRing.Position = new Vector2f(Player.CurrentTarget.GetPosition().X  + 3, Player.CurrentTarget.GetPosition().Y  + 12) ;
-                    GameWindow.Draw(Objects.TargetRing);
+                    Constants.TargetRing.Position = new Vector2f(Player.CurrentTarget.GetPosition().X  + 3, Player.CurrentTarget.GetPosition().Y  + 12) ;
+                    GameWindow.Draw(Constants.TargetRing);
                 }
                 #endregion
 
@@ -80,8 +81,11 @@ namespace RPG
 
                 #region UI Drawing
                 #region debug
-                fpsText.DisplayedString = string.Format("FPS: {0}\nX: {1}\nY: {2}\nTarget: {3}", fps, Player.GetPosition().X, Player.GetPosition().Y, Player.CurrentTargetName());
-                GameWindow.Draw(fpsText);
+                if (Config.DebugOutput)
+                {
+                    Debug.GenerateDebugInfo(Player, fps);
+                    DrawRange(Debug.DebugPanel.ToArray());
+                }
                 #endregion
                 #region Draw UI Spell bar
                 DrawRange(UserInterface.SpellBar.SpellBarDrawables.ToArray());
@@ -214,7 +218,6 @@ namespace RPG
             }
             #endregion
         }
-
         static void DrawToolTip()
         {
             var coord = GameWindow.MapPixelToCoords(Mouse.GetPosition(GameWindow));
@@ -259,7 +262,8 @@ namespace RPG
         static void app_KeyPressed(object sender, KeyEventArgs e)
         {
             switch (e.Code)
-            { 
+            {
+            #region numbers
                 case Keyboard.Key.Num1:
                     Spell spellAtIndex = UserInterface.SpellBar.GetSpellAtIndex(0);
                     Console.WriteLine("Casting" + spellAtIndex.Name);
@@ -283,6 +287,7 @@ namespace RPG
                     GameWindow.Close();
                     break;
             }
+            #endregion
 
             if (e.Code == Keyboard.Key.Escape)
             {
@@ -294,7 +299,7 @@ namespace RPG
             }
             if (e.Code == Keyboard.Key.Tilde)
             {
-                Player.Health -= 20;
+                Config.DebugOutput = !Config.DebugOutput;
             }
         }
         static void OnClose(object sender, EventArgs e)
