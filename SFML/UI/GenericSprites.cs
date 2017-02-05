@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using SFML.Graphics;
 using SFML.System;
 using RPG.Globals;
+using RPG.Extensions;
 
 namespace RPG
 {
@@ -38,17 +39,22 @@ namespace RPG
                 Color = Color.Black,
                 Position = new Vector2f(_BackPanel.Position.X + 3, _BackPanel.Position.Y + 3)
             };
+            _SpellName.WrapText(_BackPanel.Size, _SpellName.CharacterSize);
+
             _Description = new Text(spell.Description, Constants.GlobalFont, 14)
             {
                 Color = Color.Black,
                 Position = new Vector2f(_BackPanel.Position.X + 3, _BackPanel.Position.Y + 15)
             };
+            _Description.WrapText(_BackPanel.Size, 16);
+
             _ManaCost = new Text(string.Format("{0} MP", spell.ManaCost), Constants.GlobalFont, 16) 
             { 
                 Color = Color.Cyan,
                 Style = Text.Styles.Bold,
                 Position = new Vector2f((_BackPanel.Position.X + _BackPanel.Size.X) - 50, _BackPanel.Position.Y + 3)
             };
+            _ManaCost.WrapText(_BackPanel.Size, _ManaCost.CharacterSize);
             
             AddLayers();
         }

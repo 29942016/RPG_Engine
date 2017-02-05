@@ -95,6 +95,7 @@
     <Compile Include="Entities\Interactable.cs" />
     <Compile Include="Entities\NPC.cs" />
     <Compile Include="Entities\SpellParticle.cs" />
+    <Compile Include="Extensions\Text.cs" />
     <Compile Include="Globals\Enumerations.cs" />
     <Compile Include="Globals\Funcs.cs" />
     <Compile Include="Globals\Constants.cs" />
