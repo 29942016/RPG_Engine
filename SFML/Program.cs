@@ -14,7 +14,7 @@ namespace RPG
 {
     static class Program
     {
-        static Player Player = new Player("A really long player name.");
+        static Player Player = new Player("Oliver");
         static UserInterface UserInterface;
         static TileMapEngine MapEngine;
         static RenderWindow GameWindow;

@@ -25,28 +25,46 @@ namespace RPG.UI
         {
             DebugPanel.Clear();
 
-            _DebugText.DisplayedString = string.Format("Framerate: {0}\nX: {1}\nY: {2}\nTarget: {3}", fps, player.GetPosition().X, player.GetPosition().Y, player.CurrentTargetName());
-            _DebugText.WrapText(_DebugBackground.Size, 16);
+            _DebugPlayerText.DisplayedString = string.Format("Framerate:{0}\nX: {1}\nY: {2}\nTarget: {3}", fps, player.GetPosition().X, player.GetPosition().Y, player.CurrentTargetName());
+            _DebugPlayerText.WrapText(_DebugBackground.Size, 16);
 
             DebugPanel.Add(_DebugBackground);
-            DebugPanel.Add(_DebugText);
+            DebugPanel.Add(_DebugHeader);
+            DebugPanel.Add(_DebugPanelTitle);
+            DebugPanel.Add(_DebugPlayerText);
         }
 
         #region drawables
-        private static Text _DebugText = new Text("", Constants.GlobalFont, 16)
-        {
-            Position = new Vector2f(4, 4),
-            Color = Color.Black,
-        };
-
         private static RectangleShape _DebugBackground = new RectangleShape()
         {
-            Position = new Vector2f(2, 2),
+            Position = new Vector2f(5, 5),
             Size = new Vector2f(150, 300),
-            FillColor = Color.White,
-            OutlineColor = Color.Red,
+            FillColor = Color.Black,
+            OutlineColor = Color.Blue,
             OutlineThickness = 2,
         };
+
+        private static RectangleShape _DebugHeader = new RectangleShape()
+        {
+            Position = new Vector2f(_DebugBackground.GetGlobalBounds().Left, _DebugBackground.GetGlobalBounds().Top),
+            Size = new Vector2f(_DebugBackground.GetGlobalBounds().Width, 20),
+            FillColor = Color.Black,
+            OutlineColor = Color.Blue,
+            OutlineThickness = 2,
+        };
+
+        private static Text _DebugPlayerText = new Text(string.Empty, Constants.GlobalFont, 16)
+        {
+            Position = new Vector2f(_DebugBackground.GetGlobalBounds().Left + 3 ,_DebugHeader.GetGlobalBounds().Height),
+            Color = Color.White,
+        };
+
+        private static Text _DebugPanelTitle = new Text("Debug Info", Constants.GlobalFont, 16)
+        {
+            Position = new Vector2f(_DebugBackground.GetGlobalBounds().Left + 25 ,_DebugHeader.GetGlobalBounds().Top + 2),
+            Color = Color.White,
+        };
+
         #endregion
 
     }
